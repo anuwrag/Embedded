@@ -45,7 +45,7 @@ Reference: (https://www.instructables.com/MicroPython-on-an-ESP32-Board-With-Int
 ### Blinking the LED
 The following code blinks the white LED.
 
-``` bash
+``` python
 from machine import Pin
 import time
 
@@ -58,3 +58,19 @@ while True:
     time.sleep(0.5)
 ```
 
+Testing the LCD 
+``` python
+from machine import I2C, Pin
+import ssd1306
+
+rst = Pin(21, Pin.OUT)
+rst.value(1)
+scl = Pin(18, Pin.OUT, Pin.PULL_UP)
+sda = Pin(17, Pin.OUT, Pin.PULL_UP)
+i2c = I2C(scl=scl, sda=sda, freq=450000)
+oled = ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3c)
+oled.fill(0)
+oled.text('ESP32', 45, 5)
+oled.text('TestCode', 20, 20)
+oled.show()
+```
