@@ -1,9 +1,11 @@
-# Pinout for Heltec Wifi Kit 32 
+# Pinout for Heltec Wifi Kit 32 V3
+
+
 * **White LED** Pin 35.
 * **OLED SDA** Pin 17.
 * **OLED SCL** Pin 18.
 * **OLED RST** Pin 21.
-
+![Pinout of Heltec Wifi Kit 32 V3 ESP S3](WifiKit32_ESPS3_Pinout.png)
 # Setting up MicroPython on Heltec WiFi Kit 32 V3
 
 This guide will walk you through setting up MicroPython on your Heltec WiFi Kit 32 V3.
