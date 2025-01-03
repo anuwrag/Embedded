@@ -28,10 +28,28 @@ esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 micropython-es
 ```
 
 ### Transferring libraries to the ESP32
-To run the OLED on the ESP32, we need the driver `ssd1306.py`. 
+To run the OLED on the ESP32, we need the driver/library `ssd1306.py`. 
 https://github.com/adafruit/micropython-adafruit-ssd1306
 #### Transferring 
 ```ampy --port COM12 --baud 115200 put x:\location\ssd1306.py```
+
 Reference: (https://www.instructables.com/MicroPython-on-an-ESP32-Board-With-Integrated-SSD1/)
 
 
+# Sample code with Micropython
+
+### Blinking the LED
+The following code blinks the white LED.
+
+``` bash
+from machine import Pin
+import time
+
+led = Pin(35, Pin.OUT)  # The onboard led on pin 35
+
+while True:
+    led.on()
+    time.sleep(0.5)
+    led.off()
+    time.sleep(0.5)
+```
