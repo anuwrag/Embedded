@@ -79,6 +79,7 @@ oled.show()
 
 Saving the code permanently on the ESP32: `main.py`
 
+Note: you will needto call the function into `boot.py` for further saving.
 ``` python
 # main.py
 
