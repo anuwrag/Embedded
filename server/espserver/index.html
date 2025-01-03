@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mango</title>
+</head>
+<body>
+
+  <h1>Mango</h1>
+  <input type="text" id="message" placeholder="Enter message">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    function sendMessage() {
+      const message = document.getElementById('message').value;
+
+      // Use fetch API to send message to apple.html
+      fetch('http://localhost:8080/apple.html', {  // Replace with actual URL of apple.html
+        method: 'POST',
+        mode: 'cors', // Enable CORS
+        headers: {
+          'Content-Type': 'text/plain'
+        },
+        body: message
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        console.log('Message sent successfully');
+      })
+      .catch(error => {
+        console.error('Error sending message:', error);
+      });
+    }
+  </script>
+
+</body>
+</html>
