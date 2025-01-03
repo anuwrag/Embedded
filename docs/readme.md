@@ -1,4 +1,8 @@
 # Pinout for Heltec Wifi Kit 32 
+* **White LED** Pin 35.
+* **OLED SDA** Pin 17.
+* **OLED SCL** Pin 18.
+* **OLED RST** Pin 21.
 
 # Setting up MicroPython on Heltec WiFi Kit 32 V3
 
@@ -45,7 +49,7 @@ The following code blinks the white LED.
 from machine import Pin
 import time
 
-led = Pin(35, Pin.OUT)  # The onboard led on pin 35
+led = Pin(35, Pin.OUT)  # The onboard white led on pin 35
 
 while True:
     led.on()
@@ -53,3 +57,4 @@ while True:
     led.off()
     time.sleep(0.5)
 ```
+
