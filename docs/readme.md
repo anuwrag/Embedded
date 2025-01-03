@@ -25,3 +25,13 @@ pip install adafruit-ampy # allows transfer of data from computer to board
 esptool.py --chip esp32 --port /dev/ttyUSB0 erase_flash
 esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 micropython-esp32-xxxx.bin
 
+```
+
+### Transferring libraries to the ESP32
+To run the OLED on the ESP32, we need the driver `ssd1306.py`. 
+https://github.com/adafruit/micropython-adafruit-ssd1306
+#### Transferring 
+```ampy --port COM12 --baud 115200 put x:\location\ssd1306.py```
+Reference: (https://www.instructables.com/MicroPython-on-an-ESP32-Board-With-Integrated-SSD1/)
+
+
