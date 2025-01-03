@@ -58,7 +58,7 @@ while True:
     time.sleep(0.5)
 ```
 
-Testing the LCD 
+Testing the OLED Display 
 ``` python
 from machine import I2C, Pin
 import ssd1306
@@ -67,10 +67,45 @@ rst = Pin(21, Pin.OUT)
 rst.value(1)
 scl = Pin(18, Pin.OUT, Pin.PULL_UP)
 sda = Pin(17, Pin.OUT, Pin.PULL_UP)
-i2c = I2C(scl=scl, sda=sda, freq=450000)
+i2c = I2C(scl=scl, sda=sda, freq=450000) # freq is the refresh rate
 oled = ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3c)
 oled.fill(0)
 oled.text('ESP32', 45, 5)
 oled.text('TestCode', 20, 20)
 oled.show()
+```
+
+Saving the code permanently on the ESP32: `main.py`
+
+``` python
+# main.py
+
+def write_code_to_file():
+    """Writes the provided MicroPython code to a file named 'main.py'."""
+
+    code = """
+from machine import I2C, Pin
+import ssd1306
+
+rst = Pin(21, Pin.OUT)
+rst.value(1)
+scl = Pin(18, Pin.OUT, Pin.PULL_UP)
+sda = Pin(17, Pin.OUT, Pin.PULL_UP)
+i2c = I2C(scl=scl, sda=sda, freq=400000)
+oled = ssd1306.SSD1306_I2C(128, 64, i2c)
+oled.fill(0)
+oled.text('ESP32', 45, 5)
+oled.text('TestCode', 30, 20)
+oled.show()
+    """
+
+    try:
+        with open('main.py', 'w') as file:
+            file.write(code)
+        print("Code written to 'main.py' successfully!")
+    except Exception as e:
+        print(f"Error writing to file: {e}")
+
+# Call the function to write the code
+write_code_to_file()# Write your code here :-)
 ```
